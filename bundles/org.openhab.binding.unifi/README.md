@@ -27,12 +27,16 @@ The following table describes the Bridge configuration parameters:
 
 | Parameter                | Description                                    | Config   | Default |
 | ------------------------ | ---------------------------------------------- |--------- | ------- |
-| host                     | Hostname of IP address of the UniFi Controller | Required | -       |
+| host                     | Hostname or IP address of the UniFi Controller | Required | -       |
 | port                     | Port of the UniFi Controller                   | Required | -       |
+| unifios                  | Is the UniFi Controller running on UniFi OS    | Required | -       |
 | username                 | The username to access the UniFi Controller    | Required | -       |
 | password                 | The password to access the UniFi Controller    | Required | -       |
 | refresh                  | Refresh interval in seconds                    | Optional | 10      |
 
+#### 'unifios'
+
+The 'unifios' parameter should be set to "true" if the UniFi Controller is running on UniFi OS, else it should be set to "false".
 
 ## Thing Configuration
 
@@ -106,7 +110,7 @@ The `reconnect` channel allows you to force a client to reconnect. Sending `ON` 
 things/unifi.things
 
 ```
-Bridge unifi:controller:home "UniFi Controller" [ host="unifi", port=8443, username="$username", password="$password", refresh=10 ] {
+Bridge unifi:controller:home "UniFi Controller" [ host="unifi", port=8443, username="$username", password="$password", unifios="false", refresh=10 ] {
 	Thing wirelessClient matthewsPhone "Matthew's iPhone" [ cid="$cid", site="default", considerHome=180 ]
 }
 ```
